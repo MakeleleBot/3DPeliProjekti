@@ -17,6 +17,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    Enemy enemy = other.GetComponent<Enemy>();
+
+    //    if(enemy != null)
+    //    {
+
+    //    }
+
+    //    if(other.gameObject.CompareTag("FT"))
+    //    {
+            
+    //    }
+    //}
+
     void Die()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
