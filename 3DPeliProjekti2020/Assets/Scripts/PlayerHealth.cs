@@ -32,7 +32,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            TakeDamage(20);
+            TakeDamage(1);
+            healthBar.SetHealth(currentHealth);
         }
     }
 

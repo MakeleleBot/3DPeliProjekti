@@ -5,7 +5,7 @@ using UnityEngine;
 public class FTDamage : MonoBehaviour
 {
 
-    public int damage = 25;
+    public int damage = 1;
 
 
 
@@ -15,14 +15,25 @@ public class FTDamage : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        Enemy enemy = other.GetComponent<Enemy>();
+    //private void OnParticleCollision(GameObject other)
+    //{
+    //    Enemy enemy = other.GetComponent<Enemy>();
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("Osuma");
-            enemy.TakeDamage(damage);
-        }
-    }
+    //    if (other.gameObject.CompareTag("Enemy"))
+    //    {
+    //        Debug.Log("Osuma");
+    //        enemy.TakeDamage(damage);
+    //    }
+    //}
+
+    //public void OnTriggerEnter(Collider other)
+    //{
+    //    Enemy enemy = other.GetComponent<Enemy>();
+
+    //    if (other.gameObject.CompareTag("Enemy"))
+    //    {
+    //        Debug.Log("Osuma");
+    //        enemy.EnemyTakeDamage(damage);
+    //    }
+    //}
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 public class FlameThrower : MonoBehaviour
 {
 
-    public GameObject FTHZ1;
+    public GameObject FTHZ1; //HitZone
     public GameObject FTHZ2;
 
-    public int damage = 25;
+    //public int damage = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,7 @@ public class FlameThrower : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             GetComponent<Animator>().SetBool("FTON",false);
+            FTHZ1.gameObject.SetActive(false);
         }
 
       
