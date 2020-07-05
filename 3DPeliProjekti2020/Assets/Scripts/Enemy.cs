@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int Maxhealth = 100;
+    public int Maxhealth = 10000;
     public int CurrentHealth;
 
     public EnemyHealthbarl EnemyHB;
@@ -26,21 +26,39 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-
-    public void OnTriggerEnter(Collider other)
+    public void OnParticleCollision(GameObject other)
     {
-        //Enemy enemy = other.GetComponent<Enemy>();
+        int damage = other.GetComponent<ParticleDamage>().GetDamage();
 
-        //if (enemy != null)
-        //{
+        ProcessHit(damage);
 
-        //}
-
-        if (other.gameObject.CompareTag("FT"))
+        if (CurrentHealth <= 0)
         {
-            EnemyTakeDamage(5);
+            Die();
         }
+
     }
+
+    void ProcessHit(int damage)
+    {
+        CurrentHealth -= damage;
+        EnemyHB.SetEnemyHealth(CurrentHealth);
+    }
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    //Enemy enemy = other.GetComponent<Enemy>();
+
+    //    //if (enemy != null)
+    //    //{
+
+    //    //}
+
+    //    if (other.gameObject.CompareTag("FT"))
+    //    {
+    //        Debug.Log("aaarghhs");
+    //        EnemyTakeDamage(1);
+    //    }
+    //}
 
     void Die()
     {

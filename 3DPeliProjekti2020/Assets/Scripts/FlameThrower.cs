@@ -21,12 +21,12 @@ public class FlameThrower : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             GetComponent<Animator>().SetBool("FTON", true);
-            FTHZ1.gameObject.SetActive(true);
+            //FTHZ1.gameObject.SetActive(true);
         }
         if (Input.GetMouseButtonUp(0))
         {
             GetComponent<Animator>().SetBool("FTON",false);
-            FTHZ1.gameObject.SetActive(false);
+            //FTHZ1.gameObject.SetActive(false);
         }
 
       

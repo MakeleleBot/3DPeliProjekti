@@ -166,6 +166,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FTHZ1: {fileID: 774488234}
   FTHZ2: {fileID: 1823778416}
+--- !u!114 &77207910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77207904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d16c205192ae4296fd940cbef9b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleDamage: 1
 --- !u!1 &96101956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f836f0399c6a23c4eb27f802f2ff120e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Maxhealth: 100
+  Maxhealth: 1000
   CurrentHealth: 0
   EnemyHB: {fileID: 2010707166}
   deathEffect: {fileID: 0}
@@ -1810,9 +1823,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1904,6 +1917,21 @@ PrefabInstance:
       value: 254
       objectReference: {fileID: 0}
     - target: {fileID: 198214374999220926, guid: 007c57e2df8e9b144b99f471b84f3d56,
+        type: 3}
+      propertyPath: TriggerModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198637950067575458, guid: 007c57e2df8e9b144b99f471b84f3d56,
         type: 3}
       propertyPath: TriggerModule.enabled
       value: 1
