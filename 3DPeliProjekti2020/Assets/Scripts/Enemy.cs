@@ -44,21 +44,7 @@ public class Enemy : MonoBehaviour
         CurrentHealth -= damage;
         EnemyHB.SetEnemyHealth(CurrentHealth);
     }
-    //public void OnTriggerStay(Collider other)
-    //{
-    //    //Enemy enemy = other.GetComponent<Enemy>();
-
-    //    //if (enemy != null)
-    //    //{
-
-    //    //}
-
-    //    if (other.gameObject.CompareTag("FT"))
-    //    {
-    //        Debug.Log("aaarghhs");
-    //        EnemyTakeDamage(1);
-    //    }
-    //}
+  
 
     void Die()
     {
