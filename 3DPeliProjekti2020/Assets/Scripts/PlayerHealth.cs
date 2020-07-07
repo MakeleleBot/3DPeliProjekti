@@ -28,13 +28,29 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetHealth(currentHealth);
     }
 
+    public void HealthPickUp(int health)
+    {
+        currentHealth += health;
+
+        if(currentHealth>100)
+        {
+            currentHealth = 100;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
             Debug.Log("apuaa");
-            TakeDamage(1);
+            TakeDamage(20);
             healthBar.SetHealth(currentHealth);
+        }
+        if(other.gameObject.CompareTag("HP"))
+        {
+            HealthPickUp(20);
+            healthBar.SetHealth(currentHealth);
+            Destroy(other.gameObject);
         }
     }
 
