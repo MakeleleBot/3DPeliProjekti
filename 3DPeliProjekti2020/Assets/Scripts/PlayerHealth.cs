@@ -19,7 +19,10 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        if (currentHealth < 0)
+        {
+            KillMe();
+        }
     }
 
     void TakeDamage(int damage)
@@ -52,6 +55,11 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth);
             Destroy(other.gameObject);
         }
+    }
+
+    public void KillMe()
+    {
+            Destroy(gameObject);
     }
 
 
