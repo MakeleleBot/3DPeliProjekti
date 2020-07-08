@@ -7,6 +7,7 @@ public class MenuControl : MonoBehaviour
 {
     public void ButtonStart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
 
