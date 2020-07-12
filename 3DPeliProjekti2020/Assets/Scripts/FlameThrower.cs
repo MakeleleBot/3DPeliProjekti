@@ -23,7 +23,7 @@ public class FlameThrower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)&&currentGas>0)
         {
            
             isShooting = true;
@@ -31,14 +31,13 @@ public class FlameThrower : MonoBehaviour
             GetComponent<Animator>().SetBool("FTON", true);
             
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)|| currentGas < 0)
         {
             isShooting = false;
             GetComponent<Animator>().SetBool("FTON",false);
            
         }
 
-       
 
         if (isShooting)
         {

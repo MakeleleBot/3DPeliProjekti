@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        Scoretesting.pointCount += 100;
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
