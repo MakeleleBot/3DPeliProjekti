@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Debug.Log("apuaa");
-            TakeDamage(20);
+            TakeDamage(1);
             healthBar.SetHealth(currentHealth);
         }
         if(other.gameObject.CompareTag("HP"))
