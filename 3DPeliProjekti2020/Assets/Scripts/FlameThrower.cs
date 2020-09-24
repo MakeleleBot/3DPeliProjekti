@@ -12,12 +12,17 @@ public class FlameThrower : MonoBehaviour
     public float GasBurnRate = 20f;
 
     bool isShooting = false;
+
+    public AudioSource FTSound;
+
     
     // Start is called before the first frame update
     void Start()
     {
         currentGas = maxGas;
         GB.SetMaxGas(maxGas);
+        FTSound = GetComponent<AudioSource>();
+        //FTSound.Play(0);
     }
 
     // Update is called once per frame
@@ -25,15 +30,17 @@ public class FlameThrower : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0)&&currentGas>0)
         {
-           
-            isShooting = true;
+            FTSound.Play();
 
+            isShooting = true;
             GetComponent<Animator>().SetBool("FTON", true);
-            
+          
+
         }
         if (Input.GetMouseButtonUp(0)|| currentGas < 0)
         {
-            isShooting = false;
+            FTSound.Stop();
+            isShooting = false;    
             GetComponent<Animator>().SetBool("FTON",false);
            
         }
