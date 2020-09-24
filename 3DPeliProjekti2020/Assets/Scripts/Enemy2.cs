@@ -28,6 +28,8 @@ public class Enemy2 : MonoBehaviour
     }
     public void OnParticleCollision(GameObject other)
     {
+
+        
         int damage2 = other.GetComponent<ParticleDamage>().GetDamage();
 
         ProcessHit2(damage2);
