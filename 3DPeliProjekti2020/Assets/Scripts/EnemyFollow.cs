@@ -12,6 +12,10 @@ public class EnemyFollow : MonoBehaviour
     public int attackTrigger;
     public RaycastHit shot;
     Animator EnemyAnim;
+    public GameObject player;
+    public PlayerHealth ph;
+    public GameObject attackSphere;
+    public EnemyFollow ef;
     
     Enemy EHealth;
 
@@ -21,6 +25,8 @@ public class EnemyFollow : MonoBehaviour
     {
         EnemyAnim = GetComponent<Animator>();
         EHealth = GetComponent<Enemy>();
+        ph = player.GetComponent<PlayerHealth>();
+        ef = GetComponent<EnemyFollow>();
     }
 
     private void Update()
@@ -37,6 +43,7 @@ public class EnemyFollow : MonoBehaviour
                     // theEnemy.GetComponent<Animation>().Play("Walking");  // Animaatio viholliselle
                     transform.position = Vector3.MoveTowards(transform.position, thePlayer.transform.position, enemySpeed);
                     //EnemyAnim.SetFloat("Move", Mathf.Abs(enemySpeed));
+                    EnemyAnim.SetBool("Attacking", false);
                     EnemyAnim.SetBool("Walking", true);
                 }
             }
@@ -58,6 +65,7 @@ public class EnemyFollow : MonoBehaviour
 
         if(EHealth.CurrentHealth < 0)
         {
+            ef.enabled = false;
             EnemyAnim.SetBool("Die", true);
         }
     }
@@ -71,5 +79,15 @@ public class EnemyFollow : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         attackTrigger = 0;
+    }
+
+    private void AttackPlayer()
+    {
+        attackSphere.GetComponent<SphereCollider>().enabled = true;
+    }
+
+    private void StopAttack()
+    {
+        attackSphere.GetComponent<SphereCollider>().enabled = false;
     }
 }

@@ -9,6 +9,11 @@ TagManager:
   - FT
   - HP
   - GAS
+  - AttackSphere
+  - GameMaster
+  - PointText
+  - asd
+  - Camera
   layers:
   - Default
   - TransparentFX

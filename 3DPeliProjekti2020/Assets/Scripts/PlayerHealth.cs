@@ -9,11 +9,14 @@ public class PlayerHealth : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public GameMaster gm;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
     // Update is called once per frame
@@ -25,9 +28,13 @@ public class PlayerHealth : MonoBehaviour
         //}
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if(currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
         healthBar.SetHealth(currentHealth);
     }
 
@@ -35,25 +42,35 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += health;
 
-        if(currentHealth>100)
+        if(currentHealth>maxHealth)
         {
-            currentHealth = 100;
+            currentHealth = maxHealth;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
-        {
-            Debug.Log("apuaa");
-            TakeDamage(1);
-            healthBar.SetHealth(currentHealth);
-        }
+        //if (other.tag == "Enemy")
+        //{
+        //    Debug.Log("apuaa");
+        //    TakeDamage(1);
+        //    healthBar.SetHealth(currentHealth);
+        //}
         if(other.gameObject.CompareTag("HP"))
         {
             HealthPickUp(20);
             healthBar.SetHealth(currentHealth);
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("AttackSphere"))
+        {
+            TakeDamage(20);
+        }
+
+        if (other.gameObject.CompareTag("asd"))
+        {
+            gm.points += 100;
         }
     }
 

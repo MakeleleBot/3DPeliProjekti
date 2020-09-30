@@ -10,9 +10,12 @@ public class Enemy : MonoBehaviour
     public EnemyHealthbarl EnemyHB;
     public GameObject deathEffect;
 
+    private GameMaster gm;
+
 
     public void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         CurrentHealth = Maxhealth;
         EnemyHB.SetEnemyMaxHealth(Maxhealth);
     }
@@ -23,7 +26,7 @@ public class Enemy : MonoBehaviour
             
         if (CurrentHealth <= 0)
         {
-            Die();
+ 
         }
     }
     public void OnParticleCollision(GameObject other)
@@ -35,9 +38,8 @@ public class Enemy : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            Die();
-        }
 
+        }
     }
 
     void ProcessHit(int damage)
@@ -49,8 +51,8 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Scoretesting.pointCount += 100;
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        gm.points += 100;
         Destroy(gameObject);
     }
 }
