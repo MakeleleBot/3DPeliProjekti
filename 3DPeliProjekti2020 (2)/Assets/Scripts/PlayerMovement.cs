@@ -30,22 +30,9 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public Camera playerCamera;
-    //private FovChange cameraFov;
-    //[SerializeField] private Transform debugHitPoint;
-    [SerializeField] private Transform hookshotTransform;
-    private Vector3 hookShotPosition;
-    private float hookshotSize;
-    private State state;
 
     Vector3 velocity;
     public bool grounded;
-
-    private enum State
-    {
-        Normal,
-        HookShotFlyingPlayer,
-        HookshotThrown
-    }
 
     public void Awake()
     {
@@ -135,122 +122,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //if(HsNextFireTime > 0)
-        //{
-        //    HsNextFireTime -= Time.deltaTime;
-        //}
-
-        //if(HsNextFireTime < 0)
-        //{
-        //    HsNextFireTime = 0;
-        //}
-
-        //if (playerHealth <= 0)
-        //{
-        //    gameObject.SetActive(false);
-        //}
-
-        //if(playerHealth >= 10f)
-        //{
-        //    playerHealth = 10f;
-        //}
-
-        //switch (state)
-        //{
-        //    default:
-        //    case State.Normal:
-        //        HandleHookShotStart();
-        //        Movement();
-        //        MouseLook();
-        //        break;
-
-        //    case State.HookshotThrown:
-        //        HandleHookshotThrown();
-        //        Movement();
-        //        MouseLook();
-        //        break;
-
-        //    case State.HookShotFlyingPlayer:
-        //        HandleHookshotMovement();
-        //        MouseLook();
-        //        break;
-        //}
-
-        if (onWater)
-        {
-            speed = 12f;
-        }
-
-        if (!onWater)
-        {
-            speed = 24f;
-        }
     }
-
-    //private void HandleHookShotStart()
-    //{
-    //    if (TestInputHS() && HsNextFireTime == 0)
-    //    {
-    //        HsNextFireTime = HsCooldownTime;
-
-    //        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit raycastHit))
-    //        {
-    //                //debugHitPoint.position = raycastHit.point;
-    //                hookShotPosition = raycastHit.point;
-    //                hookshotSize = 0f;
-    //                hookshotTransform.gameObject.SetActive(true);
-    //                hookshotTransform.localScale = Vector3.zero;
-    //                state = State.HookshotThrown;
-    //        }
-    //    }
-    //}
-
-    //private void HandleHookshotThrown()
-    //{
-    //    hookshotTransform.LookAt(hookShotPosition);
-
-    //    float hsThrowSpeed = 500f;
-    //    hookshotSize += hsThrowSpeed * Time.deltaTime;
-    //    hookshotTransform.localScale = new Vector3(1, 1, hookshotSize);
-
-    //    if(hookshotSize >= Vector3.Distance(transform.position, hookShotPosition))
-    //    {
-    //        state = State.HookShotFlyingPlayer;
-    //        //cameraFov.SetCameraFov(HS_FOV);
-    //    }
-    //}
-
-    //private void HandleHookshotMovement()
-    //{
-    //    hookshotTransform.LookAt(hookShotPosition);
-    //    Vector3 hookShotDir = (hookShotPosition - transform.position).normalized;
-
-    //    float hsMinSpeed = 10f;
-    //    float hsMaxSpeed = 40f;
-    //    float hookFlyingSpeedV2 = Mathf.Clamp(Vector3.Distance(transform.position, hookShotPosition), hsMinSpeed, hsMaxSpeed); //Distance based speed.
-    //    float hookFlyingSpeedMultiplier = 2f; //Use with distance based speed if needed.
-
-    //    cc.Move(hookShotDir * hookFlyingSpeedV2 * hookFlyingSpeedMultiplier * Time.deltaTime);
-
-    //    if(Vector3.Distance(transform.position, hookShotPosition) < reachedHSPosDistance)
-    //    {
-    //        StopHS();
-    //    }
-
-    //    if (TestInputHS())
-    //    {
-    //        StopHS();
-    //    }
-
-    //    if (TestInputJump())
-    //    {
-    //        float momExtraSpeed = 7f;
-    //        characterMomentum = hookShotDir * hookFlyingSpeedV2 * momExtraSpeed;
-    //        float jumpSpeed = 30f;
-    //        characterMomentum += Vector3.up * jumpSpeed;
-    //        StopHS();
-    //    }
-    //}
 
     //private void Movement()
     //{
@@ -353,13 +225,4 @@ public class PlayerMovement : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.Space);
     }
-
-    //private void StopHS()
-    //{
-    //    state = State.Normal;
-    //    ResetGravity();
-    //    hookshotTransform.gameObject.SetActive(false);
-    //    //cameraFov.SetCameraFov(NORMAL_FOV);
-    //}
-
 }
